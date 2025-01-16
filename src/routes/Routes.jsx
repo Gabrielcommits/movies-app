@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import Home from "../pages/Home";
 import Catalog from "../pages/Catalog";
@@ -10,6 +10,9 @@ import * as Config from "../constants/Config";
 const Routes = () => {
   return (
     <Switch>
+      {/* Redirect root path "/" to "/react-movie-app" */}
+      <Route exact path="/" render={() => <Redirect to={`/${Config.HOME_PAGE}`} />} />
+
       <Route
         path={`/${Config.HOME_PAGE}/:category/search/:keyword`}
         component={Catalog}
